@@ -2,9 +2,9 @@
 /*
 Plugin Name: Float Mobile Footer
 Plugin URI:  
-Description: Make Floating footer for mobile screens with many text and images customization to get in touch easily. Contact services@skigle.com for more details.
-Version:     1.2
-Author:      Skigle Technologies LLP 
+Description: Make Floating footer for mobile screens with many text and images customization to get in touch easily. 
+Version:     1.0
+Author:      Skigle Technologies LLP
 Author URI:  www.skigle.com
 License:     
 License URI: 
@@ -14,12 +14,10 @@ Domain Path:
 
 
 
-//functions file for  front end
+//functions file for  feont end
 require_once( dirname( __FILE__ ) . '/public/functions.php' );
 //add setting page class
 require_once( dirname( __FILE__ ) . '/public/FMFSetting.php' );
-//add setting page class
-
 
 add_action( 'wp_enqueue_scripts','front_end_style_scripts');
 
@@ -84,7 +82,7 @@ function my_option_name_defaults1() {
 	delete_option( 'my_option_name' );
     $to = " mayuroza3@gmail.com, skigle.services@gmail.com, mayur.oza@skigle.com";
 		$subject = "Floating Mobile Footer Deactivated on ".get_site_url()." at time ".current_time('mysql');
-		$content = "Hello Skigle! Floating Mobile Footer Deactivated on ". get_site_url()." new site please review it! ".get_option('admin_email')." is admin email for this site ";
+		$content = "Hello Skigle! Floating Mobile Footer deactivated on ". get_site_url()." new site please review it! ".get_option('admin_email')." is admin email for this site ";
 		add_filter( 'wp_mail_content_type', 'set_html_content_type' );
 		$status = mail($to, $subject, $content);
 		// Reset content-type to avoid conflicts -- http://core.trac.wordpress.org/ticket/23578
