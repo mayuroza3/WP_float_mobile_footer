@@ -1,17 +1,16 @@
 <?php
 /**
  * Plugin Name: Float Mobile Footer
- * Plugin URI: https://wordpress.org/plugins/float-mobile-footer/
- * Description: Modern, lightweight, and customizable floating mobile footer to boost engagement and conversions on mobile screens.
+ * Description: Adds a customizable mobile floating footer bar with action buttons.
  * Version: 2.0.0
- * Author: Mayur Oza
- * Author URI: https://www.mayuroza.com
- * License: GPL-2.0+
- * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain: float-mobile-footer
- * Domain Path: /languages
  * Requires at least: 5.6
  * Requires PHP: 7.4
+ * Author: Mayur Oza
+ * Author URI: https://www.mayuroza.com
+ * License: GPL v2 or later
+ * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: float-mobile-footer
+ * Domain Path: /languages
  */
 
 // If this file is called directly, abort.
