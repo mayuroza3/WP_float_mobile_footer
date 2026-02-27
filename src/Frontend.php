@@ -15,8 +15,8 @@ class Frontend {
 	}
 
 	public function enqueue_styles_and_scripts() {
-		// Only load assets if footer is enabled.
-		if ( empty( $this->options['enable'] ) || $this->options['enable'] !== 1 ) {
+		// Only load assets if footer is enabled or if it's not the admin preview iframe.
+		if ( empty( $this->options['enable'] ) || $this->options['enable'] !== 1 || isset( $_GET['fmf_preview'] ) ) {
 			return;
 		}
 
@@ -42,8 +42,8 @@ class Frontend {
 	}
 
 	public function display_footer() {
-		// Only display if footer is enabled.
-		if ( empty( $this->options['enable'] ) || $this->options['enable'] !== 1 ) {
+		// Only display if footer is enabled and it's not the admin preview iframe.
+		if ( empty( $this->options['enable'] ) || $this->options['enable'] !== 1 || isset( $_GET['fmf_preview'] ) ) {
 			return;
 		}
 

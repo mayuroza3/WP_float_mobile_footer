@@ -127,9 +127,7 @@ class Admin {
 							<h3><?php esc_html_e( 'Live Mobile Preview', 'float-mobile-footer' ); ?></h3>
 							<div class="fmf-mobile-phone-frame">
 								<div class="fmf-mobile-screen">
-									<div class="fmf-preview-content">
-										<p><?php esc_html_e( 'Your website content here...', 'float-mobile-footer' ); ?></p>
-									</div>
+									<iframe src="<?php echo esc_url( add_query_arg( 'fmf_preview', '1', get_home_url() ) ); ?>" class="fmf-preview-iframe" title="<?php esc_attr_e( 'Mobile Preview', 'float-mobile-footer' ); ?>"></iframe>
 									<div id="fmf-preview-footer" class="fmf-preview-footer">
 										<!-- Preview items inserted via JS -->
 									</div>
