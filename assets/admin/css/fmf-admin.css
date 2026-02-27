@@ -1,0 +1,144 @@
+/*
+ * Float Mobile Footer Admin Styles
+ * Prefixed with .fmf- to avoid conflicts.
+ */
+
+.fmf-admin-wrap {
+    max-width: 1000px;
+    margin: 20px 20px 0 0;
+}
+
+.fmf-settings-grid {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.fmf-settings-panel {
+    flex: 1 1 auto;
+    background: #fff;
+    padding: 20px 30px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+.fmf-preview-panel {
+    flex: 0 0 320px;
+    position: sticky;
+    top: 40px;
+}
+
+/* Toggle Switch Styling */
+.fmf-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.fmf-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.fmf-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.fmf-slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .fmf-slider {
+    background-color: #2271b1;
+}
+
+input:checked + .fmf-slider:before {
+    transform: translateX(26px);
+}
+
+/* Mobile Fake Phone Frame */
+.fmf-mobile-phone-frame {
+    border: 10px solid #222;
+    border-radius: 30px;
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+    position: relative;
+    background: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.fmf-mobile-screen {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.fmf-preview-content {
+    padding: 20px;
+    color: #999;
+}
+
+.fmf-preview-footer {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+    transition: background 0.3s, color 0.3s;
+}
+
+.fmf-preview-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    font-size: 11px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.fmf-preview-btn .dashicons {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 2px;
+}
+
+/* Make sure dashicons are fully loaded and styled inside preview panel */
+.fmf-preview-footer .dashicons {
+    display: inline-block;
+}
+
+/* Hide on Desktop Rule Simulation in Preview - not needed, but good measure */
+@media (max-width: 782px) {
+    .fmf-settings-grid {
+        flex-direction: column;
+    }
+    .fmf-preview-panel {
+        width: 100%;
+        margin-top: 20px;
+    }
+}
