@@ -2,7 +2,7 @@
 Contributors: mayuroza3
 Tags: floating footer, mobile footer, call button, whatsapp button, sticky mobile footer
 Requires at least: 5.6
-Tested up to: 6.7
+Tested up to: 6.9
 Requires PHP: 7.4
 Stable tag: 2.0.0
 License: GPLv2 or later

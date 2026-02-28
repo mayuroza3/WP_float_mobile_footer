@@ -46,9 +46,7 @@ spl_autoload_register( function ( $class ) {
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-function run_float_mobile_footer() {
+call_user_func( function() {
 	$plugin = new \FloatMobileFooter\Core();
 	$plugin->run();
-}
-
-run_float_mobile_footer();
+} );

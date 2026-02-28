@@ -13,7 +13,6 @@ class Core {
 
 	public function run() {
 		$this->load_dependencies();
-		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 	}
@@ -21,16 +20,6 @@ class Core {
 	private function load_dependencies() {
 		// Because we're using PSR-4 autoloading via float_mobile_footer.php, 
 		// we don't need manual require statements for our plugin classes here.
-	}
-
-	private function set_locale() {
-		add_action( 'plugins_loaded', function() {
-			load_plugin_textdomain(
-				'float-mobile-footer',
-				false,
-				dirname( FMF_PLUGIN_BASENAME ) . '/languages/'
-			);
-		} );
 	}
 
 	private function define_admin_hooks() {
