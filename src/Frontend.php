@@ -14,10 +14,47 @@ class Frontend {
 		$this->options = get_option( $this->option_name, [] );
 	}
 
+	/**
+	 * Get the active settings, checking for page-specific meta box overrides.
+	 */
+	private function get_active_settings() {
+		$settings = $this->options;
+
+		if ( ! is_array( $settings ) ) {
+			$settings = [];
+		}
+
+		if ( is_singular() ) {
+			$post_id = get_queried_object_id();
+
+			// Check if mobile footer is disabled on this specific page/post
+			$disabled = get_post_meta( $post_id, '_fmf_disable_footer', true );
+			if ( '1' === $disabled ) {
+				$settings['enable'] = 0;
+				return $settings;
+			}
+
+			// Check if page overrides global settings
+			$override = get_post_meta( $post_id, '_fmf_override_global', true );
+			if ( '1' === $override ) {
+				$settings['enable']      = 1;
+				$settings['phone']       = get_post_meta( $post_id, '_fmf_override_phone', true );
+				$settings['whatsapp']    = get_post_meta( $post_id, '_fmf_override_whatsapp', true );
+				$settings['email']       = get_post_meta( $post_id, '_fmf_override_email', true );
+				$settings['custom_link'] = get_post_meta( $post_id, '_fmf_override_custom_link', true );
+				$settings['custom_link_text'] = get_post_meta( $post_id, '_fmf_override_custom_link_text', true );
+			}
+		}
+
+		return $settings;
+	}
+
 	public function enqueue_styles_and_scripts() {
+		$options = $this->get_active_settings();
+
 		// Only load assets if footer is enabled or if it's not the admin preview iframe.
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( empty( $this->options['enable'] ) || $this->options['enable'] !== 1 || isset( $_GET['fmf_preview'] ) ) {
+		if ( empty( $options['enable'] ) || $options['enable'] !== 1 || isset( $_GET['fmf_preview'] ) ) {
 			return;
 		}
 
@@ -30,8 +67,8 @@ class Frontend {
 		);
 
 		// Pass Dynamic Colors to CSS properly.
-		$bg_color   = ! empty( $this->options['bg_color'] ) ? sanitize_hex_color( $this->options['bg_color'] ) : '#ffffff';
-		$text_color = ! empty( $this->options['text_color'] ) ? sanitize_hex_color( $this->options['text_color'] ) : '#333333';
+		$bg_color   = ! empty( $options['bg_color'] ) ? sanitize_hex_color( $options['bg_color'] ) : '#ffffff';
+		$text_color = ! empty( $options['text_color'] ) ? sanitize_hex_color( $options['text_color'] ) : '#333333';
 		
 		$custom_css = "
 			:root {
@@ -43,16 +80,18 @@ class Frontend {
 	}
 
 	public function display_footer() {
+		$options = $this->get_active_settings();
+
 		// Only display if footer is enabled and it's not the admin preview iframe.
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( empty( $this->options['enable'] ) || $this->options['enable'] !== 1 || isset( $_GET['fmf_preview'] ) ) {
+		if ( empty( $options['enable'] ) || $options['enable'] !== 1 || isset( $_GET['fmf_preview'] ) ) {
 			return;
 		}
 
 		$buttons = [];
 
-		if ( ! empty( $this->options['phone'] ) ) {
-			$phone = preg_replace( '/[^0-9\+]/', '', $this->options['phone'] );
+		if ( ! empty( $options['phone'] ) ) {
+			$phone = preg_replace( '/[^0-9\+]/', '', $options['phone'] );
 			$buttons[] = [
 				'url'   => esc_url( 'tel:' . $phone ),
 				'icon'  => 'dashicons-phone',
@@ -60,8 +99,8 @@ class Frontend {
 			];
 		}
 
-		if ( ! empty( $this->options['whatsapp'] ) ) {
-			$whatsapp = preg_replace( '/[^0-9]/', '', $this->options['whatsapp'] );
+		if ( ! empty( $options['whatsapp'] ) ) {
+			$whatsapp = preg_replace( '/[^0-9]/', '', $options['whatsapp'] );
 			$buttons[] = [
 				'url'   => esc_url( 'https://wa.me/' . $whatsapp ),
 				'icon'  => 'dashicons-whatsapp', // Dashicons actually supports whatsapp now via 'dashicons-whatsapp' since WP 5.5
@@ -69,18 +108,18 @@ class Frontend {
 			];
 		}
 
-		if ( ! empty( $this->options['email'] ) ) {
+		if ( ! empty( $options['email'] ) ) {
 			$buttons[] = [
-				'url'   => esc_url( 'mailto:' . sanitize_email( $this->options['email'] ) ),
+				'url'   => esc_url( 'mailto:' . sanitize_email( $options['email'] ) ),
 				'icon'  => 'dashicons-email-alt',
 				'label' => __( 'Email', 'float-mobile-footer' )
 			];
 		}
 
-		if ( ! empty( $this->options['custom_link'] ) ) {
-			$custom_text = ! empty( $this->options['custom_link_text'] ) ? sanitize_text_field( $this->options['custom_link_text'] ) : __( 'Link', 'float-mobile-footer' );
+		if ( ! empty( $options['custom_link'] ) ) {
+			$custom_text = ! empty( $options['custom_link_text'] ) ? sanitize_text_field( $options['custom_link_text'] ) : __( 'Link', 'float-mobile-footer' );
 			$buttons[] = [
-				'url'   => esc_url( $this->options['custom_link'] ),
+				'url'   => esc_url( $options['custom_link'] ),
 				'icon'  => 'dashicons-admin-links',
 				'label' => $custom_text
 			];

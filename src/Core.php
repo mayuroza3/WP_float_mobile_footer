@@ -15,6 +15,7 @@ class Core {
 		$this->load_dependencies();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
+		add_action( 'elementor/widgets/register', [ $this, 'register_elementor_widget' ] );
 	}
 
 	private function load_dependencies() {
@@ -29,6 +30,7 @@ class Core {
 			add_action( 'admin_menu', [ $plugin_admin, 'add_plugin_admin_menu' ] );
 			add_action( 'admin_enqueue_scripts', [ $plugin_admin, 'enqueue_styles_and_scripts' ] );
 			add_filter( 'plugin_action_links_' . FMF_PLUGIN_BASENAME, [ $plugin_admin, 'add_action_links' ] );
+			new Metabox();
 		}
 	}
 
@@ -38,5 +40,14 @@ class Core {
 			add_action( 'wp_enqueue_scripts', [ $plugin_public, 'enqueue_styles_and_scripts' ] );
 			add_action( 'wp_footer', [ $plugin_public, 'display_footer' ] );
 		}
+	}
+
+	/**
+	 * Register Float Mobile Footer Elementor Widget.
+	 *
+	 * @param \Elementor\Widgets_Manager $widgets_manager Elementor widgets manager.
+	 */
+	public function register_elementor_widget( $widgets_manager ) {
+		$widgets_manager->register( new ElementorWidget() );
 	}
 }
