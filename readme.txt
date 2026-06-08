@@ -2,9 +2,9 @@
 Contributors: mayuroza3
 Tags: floating footer, mobile footer, call button, whatsapp button, sticky mobile footer
 Requires at least: 5.6
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -51,8 +51,14 @@ Float Mobile Footer uses standardized WordPress hooks (`wp_footer`) allowing it 
 
 1. screenshot-1.png - The Admin Settings Page featuring color pickers and a fully functional live mobile preview interface.
 2. screenshot-2.png - Sample appearance of the floating mobile footer on testing devices.
+3. screenshot-3.png - Front-end display of the sticky mobile footer on a real smartphone.
 
 == Changelog ==
+
+= 2.1.0 =
+* Improved compatibility with the latest WordPress 7.0.
+* Enhanced URL escaping security using esc_url() for action links.
+* Updated backend metadata and synchronized documentation.
 
 = 2.0.0 =
 * Major release: Refactored entirely into Modern Object-Oriented PHP Architecture.

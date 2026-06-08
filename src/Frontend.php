@@ -54,7 +54,7 @@ class Frontend {
 		if ( ! empty( $this->options['phone'] ) ) {
 			$phone = preg_replace( '/[^0-9\+]/', '', $this->options['phone'] );
 			$buttons[] = [
-				'url'   => 'tel:' . esc_attr( $phone ),
+				'url'   => esc_url( 'tel:' . $phone ),
 				'icon'  => 'dashicons-phone',
 				'label' => __( 'Call', 'float-mobile-footer' )
 			];
@@ -63,7 +63,7 @@ class Frontend {
 		if ( ! empty( $this->options['whatsapp'] ) ) {
 			$whatsapp = preg_replace( '/[^0-9]/', '', $this->options['whatsapp'] );
 			$buttons[] = [
-				'url'   => 'https://wa.me/' . esc_attr( $whatsapp ),
+				'url'   => esc_url( 'https://wa.me/' . $whatsapp ),
 				'icon'  => 'dashicons-whatsapp', // Dashicons actually supports whatsapp now via 'dashicons-whatsapp' since WP 5.5
 				'label' => __( 'WhatsApp', 'float-mobile-footer' )
 			];
@@ -71,7 +71,7 @@ class Frontend {
 
 		if ( ! empty( $this->options['email'] ) ) {
 			$buttons[] = [
-				'url'   => 'mailto:' . sanitize_email( $this->options['email'] ),
+				'url'   => esc_url( 'mailto:' . sanitize_email( $this->options['email'] ) ),
 				'icon'  => 'dashicons-email-alt',
 				'label' => __( 'Email', 'float-mobile-footer' )
 			];

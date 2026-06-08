@@ -1,9 +1,11 @@
 <?php
 /**
  * Plugin Name: Float Mobile Footer
+ * Plugin URI:  https://github.com/mayuroza3/WP_float_mobile_footer
  * Description: Adds a customizable mobile floating footer bar with action buttons.
- * Version: 2.0.0
+ * Version: 2.1.0
  * Requires at least: 5.6
+ * Tested up to: 7.0
  * Requires PHP: 7.4
  * Author: Mayur Oza
  * Author URI: https://www.mayuroza.com
@@ -19,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define Plugin Constants
-define( 'FMF_VERSION', '2.0.0' );
+define( 'FMF_VERSION', '2.1.0' );
 define( 'FMF_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FMF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'FMF_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
