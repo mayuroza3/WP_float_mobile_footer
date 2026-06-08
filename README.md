@@ -6,13 +6,15 @@ A lightweight, modern floating mobile footer to boost engagement and conversions
 
 **Float Mobile Footer** is a customizable and highly optimized sticky footer strictly designed for mobile devices. It provides an immediate and responsive way for your visitors to reach out via Call, WhatsApp, Email, or an external Link, boosting your conversion rates natively on smaller screens. 
 
-Built with modern WordPress coding standards in mind (OOP architecture, native Settings API, no bloatware), this plugin securely hooks into your theme's footer without overlapping your content or destroying your layouts.
+Built with modern WordPress coding standards in mind (OOP architecture, native Settings API, Elementor widget integration, no bloatware), this plugin securely hooks into your theme's footer without overlapping your content or destroying your layouts.
 
 ### Core Features
+* **Elementor Widget Support:** Drag-and-drop the mobile footer widget visually in Elementor with full custom controls and responsive mobile-only visibility.
+* **Page-Specific Meta Box Overrides:** Override global footer settings or disable the footer entirely on specific posts/pages via a local metabox panel.
 * **Fully Responsive & Mobile First:** Displays perfectly fixed on mobile devices while neatly hiding on large screens using CSS.
 * **4 Dedicated Action Buttons:** Configure Phone Number, WhatsApp Number, Email Address, and Custom Links securely.
 * **Intelligent Loading:** No frontend scripts or styles are loaded until you specifically enable the footer, keeping your site fast.
-* **Fully Customizable Colors:** Match the floating bar to your brand directly from the WordPress settings in the backend. 
+* **Fully Customizable Colors:** Match the floating bar to your brand directly from the WordPress settings page or Elementor styling panel.
 * **Lightweight & Clean:** Uses native WordPress Dashicons to avoid requiring external font icon libraries.
 * **Translation Ready:** Fully prepped for your local language strings.
 * **Zero Bloat / No Ads:** No tracking scripts, no spam notifications, just a clean floating mobile footer.
